@@ -1,0 +1,375 @@
+/* Retro Lichess 2000s
+   Everything is scoped under html[data-retro]:not([data-retro-theme="win7"]) so the popup toggle can switch it off.
+   Tweak the palette here. */
+
+html[data-retro]:not([data-retro-theme="win7"]):root {
+  --retro-desktop: #008080;
+  --retro-gray: #c0c0c0;
+  --retro-white: #ffffff;
+  --retro-shadow: #808080;
+  --retro-dark: #404040;
+  --retro-navy: #000080;
+  --retro-light-sq: #dfe0c8;
+  --retro-dark-sq: #5f7f5f;
+  --retro-font: Tahoma, Verdana, Geneva, sans-serif;
+
+  /* Lichess theme variables (overrides both light and dark themes) */
+  --c-bg-page: #008080 !important;
+  --c-bg-box: #c0c0c0 !important;
+  --c-bg-zebra: #d4d0c8 !important;
+  --c-bg-zebra2: #bdb9b0 !important;
+  --c-bg-input: #ffffff !important;
+  --c-bg-header-dropdown: #c0c0c0 !important;
+  --c-bg-popup: #c0c0c0 !important;
+  --c-bg-variation: #d4d0c8 !important;
+  --c-font: #000000 !important;
+  --c-font-clear: #000000 !important;
+  --c-font-dim: #404040 !important;
+  --c-font-dimmer: #606060 !important;
+  --c-font-page: #000000 !important;
+  --c-link: #0000ee !important;
+  --c-primary: #000080 !important;
+  --c-secondary: #404040 !important;
+  --c-border: #808080 !important;
+  --c-shade: #808080 !important;
+}
+
+/* ---------- Base ---------- */
+html[data-retro]:not([data-retro-theme="win7"]) body {
+  font-family: var(--retro-font) !important;
+  font-size: 13px;
+  color: #000 !important;
+  background-color: var(--retro-desktop) !important;
+  background-image:
+    linear-gradient(45deg, rgba(255,255,255,.07) 25%, transparent 25%, transparent 75%, rgba(255,255,255,.07) 75%),
+    linear-gradient(45deg, rgba(255,255,255,.07) 25%, transparent 25%, transparent 75%, rgba(255,255,255,.07) 75%) !important;
+  background-size: 8px 8px !important;
+  background-position: 0 0, 4px 4px !important;
+}
+
+html[data-retro]:not([data-retro-theme="win7"]) body :is(h1,h2,h3,h4,h5,p,a,span,div,button,input,select,textarea,td,th,li,label,time,strong,em,legend) {
+  font-family: var(--retro-font);
+}
+
+html[data-retro]:not([data-retro-theme="win7"]) * {
+  border-radius: 0 !important;
+  text-shadow: none !important;
+  scrollbar-color: #808080 #c0c0c0;
+}
+
+html[data-retro]:not([data-retro-theme="win7"]) a { color: #0000ee; text-decoration: underline; }
+html[data-retro]:not([data-retro-theme="win7"]) a:visited { color: #551a8b; }
+html[data-retro]:not([data-retro-theme="win7"]) a:hover { color: #ff0000; }
+
+html[data-retro]:not([data-retro-theme="win7"]) h1, html[data-retro]:not([data-retro-theme="win7"]) h2, html[data-retro]:not([data-retro-theme="win7"]) h3 {
+  font-family: "Times New Roman", Times, serif !important;
+  color: var(--retro-navy) !important;
+  font-weight: bold;
+}
+
+html[data-retro]:not([data-retro-theme="win7"]) hr {
+  border: 0; height: 4px;
+  background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, magenta);
+}
+
+/* ---------- Header as a title bar ---------- */
+html[data-retro]:not([data-retro-theme="win7"]) #top {
+  background: linear-gradient(90deg, #000080, #1084d0) !important;
+  border-bottom: 3px ridge #c0c0c0 !important;
+  box-shadow: none !important;
+}
+html[data-retro]:not([data-retro-theme="win7"]) #top a,
+html[data-retro]:not([data-retro-theme="win7"]) #top button,
+html[data-retro]:not([data-retro-theme="win7"]) #top .site-title,
+html[data-retro]:not([data-retro-theme="win7"]) #top span,
+html[data-retro]:not([data-retro-theme="win7"]) #top label {
+  color: #fff !important;
+}
+html[data-retro]:not([data-retro-theme="win7"]) #top :is([class*="dropdown"], [class*="panel"], [class*="links"] ) a {
+  color: #0000ee !important;
+}
+html[data-retro]:not([data-retro-theme="win7"]) #top .site-title::after {
+  content: " NEW!";
+  color: #ff0 !important;
+  font: bold 10px var(--retro-font);
+  vertical-align: super;
+  animation: retro-blink 1s steps(2, start) infinite;
+}
+
+/* ---------- Boxes: raised gray panels ---------- */
+html[data-retro]:not([data-retro-theme="win7"]) :is(
+  .box, .lobby__box, .lobby__app, .lobby__table, .lobby__start, .mchat,
+  .analyse__tools, .analyse__controls, .round__side, .round__app__table,
+  .puz-side__box, .puzzle__side, .rcontrols, .rmoves, .study__side,
+  .page-menu__content, .page-small, .subnav, .dasher, .user-show .box
+) {
+  background: var(--retro-gray) !important;
+  color: #000 !important;
+  border: 2px solid !important;
+  border-color: #fff #404040 #404040 #fff !important;
+  box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf !important;
+}
+
+html[data-retro]:not([data-retro-theme="win7"]) .box__top, html[data-retro]:not([data-retro-theme="win7"]) .mchat__tabs, html[data-retro]:not([data-retro-theme="win7"]) .mchat__top {
+  background: linear-gradient(90deg, #000080, #1084d0) !important;
+  color: #fff !important;
+}
+html[data-retro]:not([data-retro-theme="win7"]) .box__top :is(h1, h2, span, a) { color: #fff !important; }
+
+/* ---------- Tables ---------- */
+html[data-retro]:not([data-retro-theme="win7"]) table { border-collapse: collapse; }
+html[data-retro]:not([data-retro-theme="win7"]) :is(th, thead td) {
+  background: #000080 !important; color: #fff !important; font-weight: bold;
+}
+html[data-retro]:not([data-retro-theme="win7"]) tbody tr:nth-child(odd) { background: #d4d0c8 !important; }
+html[data-retro]:not([data-retro-theme="win7"]) tbody tr:nth-child(even) { background: #bdb9b0 !important; }
+html[data-retro]:not([data-retro-theme="win7"]) tbody tr:hover { background: #ffffa0 !important; }
+html[data-retro]:not([data-retro-theme="win7"]) td, html[data-retro]:not([data-retro-theme="win7"]) th { border: 1px solid #808080; }
+
+/* ---------- Buttons ---------- */
+html[data-retro]:not([data-retro-theme="win7"]) :is(button, .button, input[type="submit"], input[type="button"], .fbt, .btn-rack__btn) {
+  font-family: var(--retro-font) !important;
+  font-size: 12px !important;
+  background: #c0c0c0 !important;
+  color: #000 !important;
+  border: 2px solid !important;
+  border-color: #fff #404040 #404040 #fff !important;
+  box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf !important;
+  text-transform: none !important;
+  cursor: pointer;
+}
+html[data-retro]:not([data-retro-theme="win7"]) :is(button, .button, input[type="submit"], .fbt):active,
+html[data-retro]:not([data-retro-theme="win7"]) :is(.button, button).active {
+  border-color: #404040 #fff #fff #404040 !important;
+  box-shadow: inset 1px 1px #808080 !important;
+}
+html[data-retro]:not([data-retro-theme="win7"]) :is(.button, button):hover { background: #d4d0c8 !important; }
+html[data-retro]:not([data-retro-theme="win7"]) :is(.button, button):disabled, html[data-retro]:not([data-retro-theme="win7"]) .button.disabled {
+  color: #808080 !important;
+}
+
+/* ---------- Form fields: sunken ---------- */
+html[data-retro]:not([data-retro-theme="win7"]) :is(input[type="text"], input[type="password"], input[type="email"],
+               input[type="number"], input[type="search"], input:not([type]),
+               select, textarea) {
+  background: #fff !important;
+  color: #000 !important;
+  border: 2px solid !important;
+  border-color: #404040 #fff #fff #404040 !important;
+  box-shadow: inset 1px 1px #808080 !important;
+  font-family: "Courier New", monospace !important;
+}
+
+/* ---------- Board: classic two-tone checkerboard ---------- */
+html[data-retro]:not([data-retro-theme="win7"]) body .cg-wrap cg-board,
+html[data-retro]:not([data-retro-theme="win7"]) body cg-board {
+  background-image: repeating-conic-gradient(
+    var(--retro-dark-sq) 0 25%, var(--retro-light-sq) 0 50%) !important;
+  background-size: 25% 25% !important;
+  border: 3px solid !important;
+  border-color: #404040 #fff #fff #404040 !important;
+  box-sizing: content-box;
+}
+html[data-retro]:not([data-retro-theme="win7"]) .cg-wrap coords { color: #000 !important; font-family: "Courier New", monospace !important; }
+
+/* Clocks look like LCD readouts */
+html[data-retro]:not([data-retro-theme="win7"]) .rclock, html[data-retro]:not([data-retro-theme="win7"]) .clock {
+  background: #000 !important;
+  color: #0f0 !important;
+  font-family: "Courier New", monospace !important;
+  border: 2px solid; border-color: #404040 #fff #fff #404040;
+}
+html[data-retro]:not([data-retro-theme="win7"]) .rclock .time, html[data-retro]:not([data-retro-theme="win7"]) .rclock * { color: #0f0 !important; }
+html[data-retro]:not([data-retro-theme="win7"]) .rclock.running { background: #003300 !important; }
+
+/* Move list */
+html[data-retro]:not([data-retro-theme="win7"]) :is(.rmoves, .analyse__moves) :is(move, san, .move, index) {
+  font-family: "Courier New", monospace !important;
+}
+html[data-retro]:not([data-retro-theme="win7"]) :is(move, .move).active { background: #000080 !important; color: #fff !important; }
+
+/* Lobby seek graph / pools */
+html[data-retro]:not([data-retro-theme="win7"]) .lobby__app__content { background: transparent !important; }
+html[data-retro]:not([data-retro-theme="win7"]) .lobby__start .button { font-weight: bold; }
+
+/* Scrollbars */
+html[data-retro]:not([data-retro-theme="win7"]) ::-webkit-scrollbar { width: 16px; }
+
+/* ---------- Injected elements ---------- */
+#retro-marquee, #retro-footer { display: none; }
+html[data-retro]:not([data-retro-theme="win7"]) #retro-marquee { display: block; }
+html[data-retro]:not([data-retro-theme="win7"]) #retro-footer { display: block; }
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-marquee="off"] #retro-marquee { display: none; }
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-footer="off"] #retro-footer { display: none; }
+
+html[data-retro]:not([data-retro-theme="win7"]) #retro-marquee {
+  background: #000;
+  color: #0f0;
+  font: bold 13px "Courier New", monospace;
+  padding: 3px 0;
+  border-bottom: 2px solid #fff;
+  white-space: nowrap;
+  overflow: hidden;
+}
+html[data-retro]:not([data-retro-theme="win7"]) #retro-marquee marquee { color: #0f0; display: block; }
+
+html[data-retro]:not([data-retro-theme="win7"]) #retro-footer {
+  max-width: 760px;
+  margin: 24px auto;
+  padding: 10px;
+  text-align: center;
+  background: #c0c0c0;
+  color: #000;
+  border: 2px solid;
+  border-color: #fff #404040 #404040 #fff;
+  font: 12px var(--retro-font);
+}
+html[data-retro]:not([data-retro-theme="win7"]) #retro-footer p { margin: 6px 0; }
+
+html[data-retro]:not([data-retro-theme="win7"]) .retro-rainbow {
+  height: 5px;
+  background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, magenta);
+  margin: 6px 0;
+}
+
+html[data-retro]:not([data-retro-theme="win7"]) .retro-construction {
+  display: inline-block;
+  padding: 4px 14px;
+  margin: 6px 0;
+  font: bold 12px "Courier New", monospace;
+  color: #000;
+  background: repeating-linear-gradient(45deg, #ffdd00 0 10px, #111 10px 20px);
+  border: 2px solid #000;
+}
+html[data-retro]:not([data-retro-theme="win7"]) .retro-construction {
+  /* keep text readable over stripes */
+  background:
+    linear-gradient(#ffdd00, #ffdd00) center / calc(100% - 16px) calc(100% - 8px) no-repeat,
+    repeating-linear-gradient(45deg, #ffdd00 0 10px, #111 10px 20px);
+}
+
+html[data-retro]:not([data-retro-theme="win7"]) .retro-counter {
+  display: inline-block;
+  background: #000;
+  color: #0f0;
+  font: bold 20px "Courier New", monospace;
+  letter-spacing: 4px;
+  padding: 2px 8px;
+  border: 2px solid;
+  border-color: #404040 #fff #fff #404040;
+}
+
+html[data-retro]:not([data-retro-theme="win7"]) .retro-badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 10px 0; }
+html[data-retro]:not([data-retro-theme="win7"]) .retro-badge {
+  width: 88px; height: 31px;
+  display: flex; align-items: center; justify-content: center;
+  font: bold 9px/1.1 Verdana, sans-serif;
+  color: #fff;
+  background: linear-gradient(#3a6ea5, #12315a);
+  border: 1px solid #000;
+  box-sizing: content-box;
+}
+html[data-retro]:not([data-retro-theme="win7"]) .retro-badge:nth-child(2) { background: linear-gradient(#a53a3a, #5a1212); }
+html[data-retro]:not([data-retro-theme="win7"]) .retro-badge:nth-child(3) { background: linear-gradient(#3aa55a, #125a2a); }
+html[data-retro]:not([data-retro-theme="win7"]) .retro-badge:nth-child(4) { background: linear-gradient(#a58a3a, #5a4812); }
+
+html[data-retro]:not([data-retro-theme="win7"]) .retro-ring { font-size: 11px; color: #000080; }
+
+@keyframes retro-blink { to { visibility: hidden; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-retro]:not([data-retro-theme="win7"]) #top .site-title::after { animation: none; }
+}
+
+/* =====================================================
+   THEME: Geocities  (html[data-retro-theme="geocities"])
+   ===================================================== */
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"]:root {
+  --retro-desktop: #000033;
+  --c-bg-page: #000033 !important;
+  --c-bg-box: #ffffcc !important;
+  --c-bg-zebra: #ffffe6 !important;
+  --c-bg-zebra2: #fff7a8 !important;
+  --c-link: #0000ff !important;
+  --c-primary: #800080 !important;
+  --retro-font: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  --retro-light-sq: #ffffcc;
+  --retro-dark-sq: #cc0066;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] body {
+  background-color: #000033 !important;
+  background-image:
+    radial-gradient(#fff 1px, transparent 1.5px),
+    radial-gradient(#ffff00 1px, transparent 1.5px),
+    radial-gradient(#00ffff 1px, transparent 1.5px) !important;
+  background-size: 47px 47px, 83px 83px, 131px 131px !important;
+  background-position: 0 0, 20px 31px, 60px 10px !important;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] #top {
+  background: #800080 !important;
+  border-bottom: 5px ridge #ffd700 !important;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] #top :is(a, button, span, label, .site-title) {
+  color: #ffff00 !important;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] :is(
+  .box, .lobby__box, .lobby__app, .lobby__table, .lobby__start, .mchat,
+  .analyse__tools, .analyse__controls, .round__side, .round__app__table,
+  .puz-side__box, .puzzle__side, .rcontrols, .rmoves, .study__side,
+  .page-menu__content, .page-small, .subnav, .dasher
+) {
+  background: #ffffcc !important;
+  border: 5px ridge #ff00ff !important;
+  box-shadow: none !important;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] :is(.box__top, .mchat__tabs, .mchat__top) {
+  background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00cc00, #0066ff, #cc00ff) !important;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] .box__top :is(h1, h2, span, a) {
+  color: #000 !important;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] :is(h1, h2, h3) {
+  font-family: var(--retro-font) !important;
+  color: #ff0000 !important;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] :is(th, thead td) {
+  background: #ff00ff !important; color: #ffff00 !important;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] tbody tr:nth-child(odd) { background: #ffffe6 !important; }
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] tbody tr:nth-child(even) { background: #fff7a8 !important; }
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] tbody tr:hover { background: #99ffff !important; }
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] :is(button, .button, input[type="submit"], input[type="button"], .fbt, .btn-rack__btn) {
+  background: #00ffff !important;
+  border: 3px outset #00cccc !important;
+  box-shadow: none !important;
+  font-weight: bold;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] :is(button, .button):active {
+  border-style: inset !important;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] body cg-board {
+  border: 5px ridge #ffd700 !important;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] #retro-marquee {
+  background: #ff0000; color: #ffff00; border-bottom: 3px ridge #ffd700;
+}
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] #retro-marquee marquee { color: #ffff00; }
+html[data-retro]:not([data-retro-theme="win7"])[data-retro-theme="geocities"] #retro-footer {
+  background: #ffffcc; border: 5px ridge #ff00ff;
+}
+
+/* Lobby: hide the giant logo overlay and flatten the pairing tiles (Win98 / Geocities) */
+html[data-retro]:not([data-retro-theme="win7"]) :is(.lobby__app__content, .lpools)::before,
+html[data-retro]:not([data-retro-theme="win7"]) :is(.lobby__app__content, .lpools)::after {
+  display: none !important;
+}
+html[data-retro]:not([data-retro-theme="win7"]) .lpools > div {
+  background: #c0c0c0 !important;
+  color: #000 !important;
+  border: 2px solid !important;
+  border-color: #fff #404040 #404040 #fff !important;
+}
+html[data-retro]:not([data-retro-theme="win7"]) .lpools :is(.clock, .perf) {
+  color: #000 !important;
+  background: none !important;
+}

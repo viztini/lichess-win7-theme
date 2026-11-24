@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Retro Lichess",
+  "version": "1.3.0",
+  "description": "Skin Lichess as Windows 7 Aero (glass, forest wallpaper, taskbar, start menu), Windows 98, or a Geocities page.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "retro-lichess@local",
+      "strict_min_version": "115.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "48": "icon.svg",
+    "96": "icon.svg"
+  },
+  "action": {
+    "default_title": "Retro Lichess",
+    "default_icon": "icon.svg",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://lichess.org/*",
+        "*://*.lichess.org/*"
+      ],
+      "css": [
+        "retro.css",
+        "win7.css"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*"
+      ],
+      "matches": [
+        "*://lichess.org/*",
+        "*://*.lichess.org/*"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "retro-lichess",
+  "version": "1.3.0",
+  "description": "Firefox extension that skins Lichess as Windows 7 Aero, Windows 98, or Geocities.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "web-ext run --source-dir extension --start-url https://lichess.org",
+    "lint": "web-ext lint --source-dir extension",
+    "build": "web-ext build --source-dir extension --artifacts-dir dist --overwrite-dest"
+  },
+  "devDependencies": {
+    "web-ext": "^8.0.0"
+  }
+}

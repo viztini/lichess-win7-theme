@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin:0; width:260px; font:12px "Segoe UI", Tahoma, sans-serif; color:#000;
+         background:linear-gradient(#f3f7fc,#dfe9f6); }
+  .title { padding:6px 10px; color:#14284a; font-size:13px;
+           background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(190,215,245,.7));
+           border-bottom:1px solid #98b0cf; text-shadow:0 0 6px #fff; }
+  .body { padding:10px 12px; }
+  label { display:block; margin:7px 0; cursor:pointer; }
+  select { margin-left:6px; padding:2px; border:1px solid #abadb3; border-radius:2px; }
+  small { color:#44546a; }
+</style>
+</head>
+<body>
+  <div class="title">Retro Lichess</div>
+  <div class="body">
+    <label><input type="checkbox" id="enabled"> Enable retro theme</label>
+    <label>Theme:
+      <select id="theme">
+        <option value="win7">Windows 7 Aero</option>
+        <option value="win98">Windows 98</option>
+        <option value="geocities">Geocities</option>
+      </select>
+    </label>
+    <label data-for="win7"><input type="checkbox" id="taskbar"> Taskbar and start menu</label>
+    <label data-for="win98 geocities"><input type="checkbox" id="marquee"> Scrolling marquee banner</label>
+    <label data-for="win98 geocities"><input type="checkbox" id="footer"> Visitor counter and badges</label>
+    <small>Changes apply instantly on open Lichess tabs.</small>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

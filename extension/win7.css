@@ -1,0 +1,352 @@
+/* =====================================================
+   THEME: Windows 7 Aero
+   Glass + forest wallpaper (assets/wallpaper.jpg).
+   Tint the glass by editing --w7-tint (r, g, b).
+   ===================================================== */
+#retro-taskbar, #retro-start { display: none; }
+
+html[data-retro][data-retro-theme="win7"]:root {
+  color-scheme: light;
+  --w7-font: "Segoe UI", "Segoe UI Variable", Tahoma, Verdana, sans-serif;
+  --w7-tint: 130, 200, 185;
+
+  --w7-shine: linear-gradient(115deg, rgba(255,255,255,0) 28%, rgba(255,255,255,.32) 29%, rgba(255,255,255,0) 52%);
+  --w7-glass:
+    var(--w7-shine),
+    linear-gradient(180deg, rgba(255,255,255,.78) 0%, rgba(255,255,255,.38) 48%, rgba(var(--w7-tint), .34) 52%, rgba(235,248,244,.62) 100%);
+  --w7-btn: linear-gradient(#f6f6f6 0%, #ececec 49%, #dcdcdc 50%, #cdcdcd 100%);
+  --w7-btn-hover: linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);
+  --w7-btn-active: linear-gradient(#e5f4fc 0%, #c4e5f6 49%, #98d1ef 50%, #68b3db 100%);
+
+  --c-bg-page: #3d6b3a !important;
+  --c-bg-box: #f3f7fc !important;
+  --c-bg-zebra: #f6f9fd !important;
+  --c-bg-zebra2: #ebf1f9 !important;
+  --c-bg-input: #ffffff !important;
+  --c-bg-header-dropdown: #f1f5fb !important;
+  --c-bg-popup: #f1f5fb !important;
+  --c-bg-variation: #ebf1f9 !important;
+  --c-font: #1b1b1b !important;
+  --c-font-clear: #000000 !important;
+  --c-font-dim: #34465c !important;
+  --c-font-dimmer: #51627a !important;
+  --c-font-page: #1b1b1b !important;
+  --c-link: #0a5aa8 !important;
+  --c-primary: #2a7bd6 !important;
+  --c-secondary: #34465c !important;
+  --c-border: #a9b9cc !important;
+  --c-shade: #a9b9cc !important;
+}
+
+/* ---------- Wallpaper ---------- */
+html[data-retro][data-retro-theme="win7"] body {
+  font-family: var(--w7-font) !important;
+  font-size: 13px;
+  color: #1b1b1b !important;
+  background-color: #2f5d34 !important;
+  background-image: url("assets/wallpaper.jpg") !important;
+  background-attachment: fixed !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+html[data-retro][data-retro-theme="win7"] body :is(h1,h2,h3,h4,h5,p,a,span,div,button,input,select,textarea,td,th,li,label,time,strong,em,legend) {
+  font-family: var(--w7-font);
+}
+html[data-retro][data-retro-theme="win7"] a { color: #0a5aa8; text-decoration: none; }
+html[data-retro][data-retro-theme="win7"] a:hover { color: #2a8be0; text-decoration: underline; }
+html[data-retro][data-retro-theme="win7"] h1, html[data-retro][data-retro-theme="win7"] h2, html[data-retro][data-retro-theme="win7"] h3 { color: #1e395b !important; font-weight: normal; }
+html[data-retro][data-retro-theme="win7"] ::selection { background: #3399ff; color: #fff; }
+html[data-retro][data-retro-theme="win7"] * { scrollbar-color: #9fb6d3 #eef3fa; }
+
+/* ---------- Glass pane behind the page content ----------
+   Keeps text readable on top of a busy photo. */
+html[data-retro][data-retro-theme="win7"] #main-wrap > main:not(.box):not(.page-small) { position: relative; }
+html[data-retro][data-retro-theme="win7"] #main-wrap > main:not(.box):not(.page-small)::before {
+  content: "";
+  position: absolute; inset: -12px;
+  z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,.52), rgba(255,255,255,.30));
+  backdrop-filter: blur(10px) saturate(1.3);
+  -webkit-backdrop-filter: blur(10px) saturate(1.3);
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.35), 0 8px 30px rgba(0,0,0,.35);
+}
+html[data-retro][data-retro-theme="win7"] :is(footer, .site-footer, .lobby__about) {
+  color: #14284a !important;
+  text-shadow: 0 0 6px rgba(255,255,255,.95) !important;
+}
+html[data-retro][data-retro-theme="win7"] :is(footer, .site-footer, .lobby__about) a {
+  color: #0b3d73 !important;
+  text-shadow: 0 0 6px rgba(255,255,255,.95) !important;
+}
+
+/* ---------- Header: glass title bar ---------- */
+html[data-retro][data-retro-theme="win7"] #top {
+  background: var(--w7-glass), rgba(var(--w7-tint), .55) !important;
+  backdrop-filter: blur(12px) saturate(1.5);
+  -webkit-backdrop-filter: blur(12px) saturate(1.5);
+  border-bottom: 1px solid rgba(0,0,0,.45) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 2px 10px rgba(0,0,0,.35) !important;
+}
+html[data-retro][data-retro-theme="win7"] #top :is(a, button, span, label, .site-title) {
+  color: #0b2a52 !important;
+  text-shadow: 0 0 8px #fff, 0 0 3px rgba(255,255,255,.9) !important;
+}
+
+/* ---------- Windows (boxes) ---------- */
+html[data-retro][data-retro-theme="win7"] :is(
+  .box, .lobby__box, .lobby__app, .lobby__table, .lobby__start, .mchat,
+  .lobby__tournaments-simuls, .lobby__tournaments, .lobby__simuls, .lobby__spotlights,
+  .analyse__tools, .analyse__controls, .round__side, .round__app__table,
+  .puz-side__box, .puzzle__side, .rcontrols, .rmoves, .study__side,
+  .page-menu__content, .page-small, .subnav, .dasher
+) {
+  background: linear-gradient(180deg, rgba(255,255,255,.93), rgba(238,244,252,.90)) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #1b1b1b !important;
+  border: 1px solid rgba(0,0,0,.55) !important;
+  border-radius: 7px !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.8), 0 6px 22px rgba(0,0,0,.40) !important;
+}
+html[data-retro][data-retro-theme="win7"] :is(.box__top, .mchat__tabs, .mchat__top, .lobby__box__top) {
+  background: var(--w7-glass), #cfe9e3 !important;
+  color: #14284a !important;
+  border-bottom: 1px solid #98b0cf !important;
+  border-radius: 6px 6px 0 0 !important;
+}
+html[data-retro][data-retro-theme="win7"] :is(.box__top, .lobby__box__top) :is(h1, h2, h3, span, a) {
+  color: #14284a !important;
+  text-shadow: 0 0 8px #fff !important;
+}
+
+/* ---------- Lobby: quick pairing tiles ---------- */
+html[data-retro][data-retro-theme="win7"] :is(.lobby__app__content, .lpools)::before,
+html[data-retro][data-retro-theme="win7"] :is(.lobby__app__content, .lpools)::after { display: none !important; }
+html[data-retro][data-retro-theme="win7"] :is(.lobby__app__content, .lpools) { background: transparent !important; }
+html[data-retro][data-retro-theme="win7"] .lpools > div {
+  background: linear-gradient(#ffffff, #dfeaf4) !important;
+  color: #14284a !important;
+  border: 1px solid #7c97b8 !important;
+  border-radius: 6px !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.85), 0 1px 3px rgba(0,0,0,.25) !important;
+  transition: background .15s, box-shadow .15s, border-color .15s;
+}
+html[data-retro][data-retro-theme="win7"] .lpools > div:hover {
+  background: var(--w7-btn-hover) !important;
+  border-color: #3c7fb1 !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.85), 0 0 8px rgba(60,160,230,.7) !important;
+}
+html[data-retro][data-retro-theme="win7"] .lpools .clock {
+  color: #14284a !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+html[data-retro][data-retro-theme="win7"] .lpools .perf { color: #4a5f7a !important; text-shadow: none !important; }
+
+html[data-retro][data-retro-theme="win7"] .tabs-horiz { background: transparent !important; }
+html[data-retro][data-retro-theme="win7"] .tabs-horiz > span {
+  background: var(--w7-btn) !important;
+  color: #000 !important;
+  border: 1px solid #707070 !important;
+  border-radius: 3px 3px 0 0 !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.85) !important;
+}
+html[data-retro][data-retro-theme="win7"] .tabs-horiz > span.active {
+  background: var(--w7-btn-hover) !important;
+  border-color: #3c7fb1 !important;
+}
+
+/* ---------- Tables: Explorer details view ---------- */
+html[data-retro][data-retro-theme="win7"] table { border-collapse: collapse; }
+html[data-retro][data-retro-theme="win7"] :is(th, thead td) {
+  background: linear-gradient(#fff, #eef2f8) !important;
+  color: #1e395b !important;
+  font-weight: normal;
+  border: 1px solid #d5dce8 !important;
+}
+html[data-retro][data-retro-theme="win7"] tbody tr:nth-child(odd) { background: #ffffff !important; }
+html[data-retro][data-retro-theme="win7"] tbody tr:nth-child(even) { background: #f4f8fd !important; }
+html[data-retro][data-retro-theme="win7"] tbody tr:hover {
+  background: linear-gradient(#fafbfd, #ebf3fd) !important;
+  outline: 1px solid #b8d6fb;
+}
+html[data-retro][data-retro-theme="win7"] td { border: 0; }
+
+/* ---------- Buttons: Aero glossy ---------- */
+html[data-retro][data-retro-theme="win7"] :is(button, .button, input[type="submit"], input[type="button"], .fbt, .btn-rack__btn) {
+  font-family: var(--w7-font) !important;
+  font-size: 12px !important;
+  color: #000 !important;
+  background: var(--w7-btn) !important;
+  border: 1px solid #707070 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.85) !important;
+  text-shadow: none !important;
+  text-transform: none !important;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, box-shadow .15s;
+}
+html[data-retro][data-retro-theme="win7"] :is(button, .button, input[type="submit"], .fbt, .btn-rack__btn):hover {
+  background: var(--w7-btn-hover) !important;
+  border-color: #3c7fb1 !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.85), 0 0 4px rgba(60,160,230,.6) !important;
+}
+html[data-retro][data-retro-theme="win7"] :is(button, .button, input[type="submit"], .fbt, .btn-rack__btn):active,
+html[data-retro][data-retro-theme="win7"] :is(button, .button).active {
+  background: var(--w7-btn-active) !important;
+  border-color: #2c628b !important;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.3) !important;
+}
+html[data-retro][data-retro-theme="win7"] :is(button, .button):disabled, html[data-retro][data-retro-theme="win7"] .button.disabled {
+  color: #838383 !important; background: #f4f4f4 !important; border-color: #adb2b5 !important;
+}
+
+/* ---------- Fields ---------- */
+html[data-retro][data-retro-theme="win7"] :is(input[type="text"], input[type="password"], input[type="email"],
+       input[type="number"], input[type="search"], input:not([type]),
+       select, textarea) {
+  background: #fff !important;
+  color: #000 !important;
+  border: 1px solid #abadb3 !important;
+  border-top-color: #e2e3ea !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+  font-family: var(--w7-font) !important;
+}
+html[data-retro][data-retro-theme="win7"] :is(input, select, textarea):focus {
+  border-color: #3399ff !important;
+  box-shadow: 0 0 4px rgba(51,153,255,.7) !important;
+  outline: none;
+}
+
+/* ---------- Board: glass frame only (your own Lichess board theme is kept) ---------- */
+html[data-retro][data-retro-theme="win7"] body cg-board {
+  box-shadow: 0 0 0 5px rgba(255,255,255,.55), 0 0 0 6px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.5) !important;
+}
+
+/* ---------- Clocks & moves ---------- */
+html[data-retro][data-retro-theme="win7"] :is(.rclock, .clock) {
+  background: linear-gradient(#ffffff, #dce8f5) !important;
+  color: #14284a !important;
+  border: 1px solid #7c97b8 !important;
+  border-radius: 4px !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.8);
+}
+html[data-retro][data-retro-theme="win7"] .rclock * { color: #14284a !important; }
+html[data-retro][data-retro-theme="win7"] .rclock.running { background: linear-gradient(#eaf6fd, #a7d9f5) !important; }
+html[data-retro][data-retro-theme="win7"] .rclock.emerg { background: linear-gradient(#ffe0e0, #ff9a9a) !important; }
+html[data-retro][data-retro-theme="win7"] :is(move, .move).active {
+  background: linear-gradient(#e8f4fd, #bee6fd) !important;
+  color: #000 !important;
+  outline: 1px solid #7da2ce;
+}
+
+/* ---------- Taskbar ---------- */
+html[data-retro][data-retro-theme="win7"] #retro-taskbar {
+  display: flex;
+  position: fixed; left: 0; right: 0; bottom: 0;
+  height: 40px; z-index: 2147483000;
+  align-items: center; gap: 4px;
+  padding: 0 0 0 6px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.50) 0%, rgba(255,255,255,.12) 45%, rgba(8,40,40,.55) 50%, rgba(40,110,105,.55) 100%),
+    rgba(25,75,75,.55);
+  backdrop-filter: blur(12px) saturate(1.6);
+  -webkit-backdrop-filter: blur(12px) saturate(1.6);
+  border-top: 1px solid rgba(255,255,255,.6);
+  box-shadow: 0 -1px 0 rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.35);
+  font-family: var(--w7-font);
+}
+html[data-retro][data-retro-theme="win7"][data-retro-taskbar="off"] #retro-taskbar,
+html[data-retro][data-retro-theme="win7"][data-retro-taskbar="off"] #retro-start { display: none !important; }
+html[data-retro][data-retro-theme="win7"]:not([data-retro-taskbar="off"]) body { padding-bottom: 44px; }
+
+html[data-retro][data-retro-theme="win7"] #retro-orb {
+  width: 40px; height: 40px; flex: none;
+  margin: -6px 6px 0 0; padding: 0;
+  border-radius: 50% !important;
+  border: 1px solid rgba(0,0,0,.6) !important;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(255,255,255,.95), rgba(255,255,255,0) 42%),
+    radial-gradient(circle at 50% 105%, #8ff0ff 0%, #2a8fe0 50%, #0a3a80 100%) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.5), 0 0 9px rgba(90,190,255,.9) !important;
+  display: grid; place-items: center;
+}
+html[data-retro][data-retro-theme="win7"] #retro-orb:hover { filter: brightness(1.2); }
+html[data-retro][data-retro-theme="win7"] .retro-flag {
+  display: grid; grid-template-columns: repeat(2, 9px); gap: 1px;
+  transform: skewY(-10deg) rotate(-4deg);
+}
+html[data-retro][data-retro-theme="win7"] .retro-flag i { width: 9px; height: 8px; display: block; border-radius: 2px; box-shadow: 0 0 2px rgba(0,0,0,.4); }
+html[data-retro][data-retro-theme="win7"] .retro-flag i:nth-child(1) { background: #ff5a36; }
+html[data-retro][data-retro-theme="win7"] .retro-flag i:nth-child(2) { background: #7bd13a; }
+html[data-retro][data-retro-theme="win7"] .retro-flag i:nth-child(3) { background: #3aa8ff; }
+html[data-retro][data-retro-theme="win7"] .retro-flag i:nth-child(4) { background: #ffc61a; }
+
+html[data-retro][data-retro-theme="win7"] a.retro-pin {
+  display: flex; align-items: center; gap: 6px;
+  height: 32px; padding: 0 14px;
+  color: #fff !important; font-size: 12px; text-decoration: none !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.9) !important;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 3px !important;
+  background: linear-gradient(rgba(255,255,255,.35), rgba(255,255,255,.08) 50%, rgba(0,0,0,.12) 51%, rgba(255,255,255,.12));
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.25);
+}
+html[data-retro][data-retro-theme="win7"] a.retro-pin:hover {
+  background: linear-gradient(rgba(255,255,255,.6), rgba(160,215,255,.3) 50%, rgba(80,160,230,.35) 51%, rgba(160,215,255,.4));
+  border-color: rgba(255,255,255,.7);
+}
+html[data-retro][data-retro-theme="win7"] a.retro-pin.current {
+  background: linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,.2) 50%, rgba(0,0,0,.05) 51%, rgba(255,255,255,.25));
+  border-color: rgba(255,255,255,.75);
+}
+html[data-retro][data-retro-theme="win7"] .retro-tray { margin-left: auto; height: 100%; display: flex; align-items: center; }
+html[data-retro][data-retro-theme="win7"] .retro-clock {
+  color: #fff; font-size: 12px; line-height: 1.25; text-align: center;
+  padding: 0 12px; text-shadow: 0 1px 2px rgba(0,0,0,.9);
+}
+html[data-retro][data-retro-theme="win7"] .retro-showdesk {
+  width: 12px; height: 100%;
+  border-left: 1px solid rgba(255,255,255,.55);
+  background: linear-gradient(rgba(255,255,255,.35), rgba(255,255,255,.05));
+}
+
+/* ---------- Start menu ---------- */
+html[data-retro][data-retro-theme="win7"] #retro-start {
+  position: fixed; left: 4px; bottom: 42px;
+  width: 340px; z-index: 2147483001;
+  padding: 8px;
+  background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(200,235,228,.55)), rgba(var(--w7-tint), .7);
+  backdrop-filter: blur(14px) saturate(1.6);
+  -webkit-backdrop-filter: blur(14px) saturate(1.6);
+  border: 1px solid rgba(0,0,0,.65);
+  border-radius: 8px 8px 0 0 !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), 0 0 24px rgba(0,0,0,.6);
+  font-family: var(--w7-font);
+}
+html[data-retro][data-retro-theme="win7"] #retro-start.open { display: block; }
+html[data-retro][data-retro-theme="win7"] #retro-start .retro-start-list {
+  background: #fff; border: 1px solid #7c97b8; border-radius: 4px; padding: 4px;
+}
+html[data-retro][data-retro-theme="win7"] #retro-start a {
+  display: block; padding: 7px 10px;
+  color: #000 !important; font-size: 13px; text-decoration: none !important;
+  border: 1px solid transparent; border-radius: 3px;
+  text-shadow: none !important;
+}
+html[data-retro][data-retro-theme="win7"] #retro-start a:hover {
+  background: linear-gradient(#f6fbff, #d6ecfb);
+  border-color: #a8d2f0;
+}
+html[data-retro][data-retro-theme="win7"] #retro-start .retro-start-title {
+  color: #14284a; font-size: 12px; padding: 2px 4px 6px; text-shadow: 0 0 6px #fff;
+}
+
+/* Win7 has no marquee/footer: the taskbar replaces them */
+html[data-retro][data-retro-theme="win7"] #retro-marquee, html[data-retro][data-retro-theme="win7"] #retro-footer { display: none !important; }
